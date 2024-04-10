@@ -23,3 +23,20 @@ services:
     environment:
       POSTGRES_PASSWORD: $POSTGRES_DATABASE_PASSWORD
       POSTGRES_DB: $POSTGRES_DATABASE_NAME
+
+  # MONGODB
+  mongodb_report_database:
+    container_name: mongodb_report_database
+    image: mongo:6.0.3
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $MONGO_DATABASE_ROOT_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD: $MONGO_DATABASE_ROOT_PASSWORD
+      MONGO_INITDB_DATABASE: $MONGO_DATABASE_NAME
+      DATABASE_USER: $MONGO_DATABASE_USERNAME
+      DATABASE_PASS: $MONGO_DATABASE_PASSWORD
+      DATABASE_NAME: $MONGO_DATABASE_NAME
+    volumes:
+      - ./src/configs/databases/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports:
+      - "${MONGO_DATABASE_PORT}:27017"
