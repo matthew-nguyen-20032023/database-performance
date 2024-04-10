@@ -40,3 +40,12 @@ services:
       - ./src/configs/databases/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     ports:
       - "${MONGO_DATABASE_PORT}:27017"
+
+  # Scylla
+  scylla_report_database:
+    container_name: scylla_report_database
+    image: scylladb/scylla:5.2.0
+    restart: always
+    command: --seeds=scylla_report_database --smp 1 --memory 750M --overprovisioned 1 --api-address 0.0.0.0
+    volumes:
+      - "./src/configs/databases/scylla.yaml:/etc/scylla/scylla.yaml"
