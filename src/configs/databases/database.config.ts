@@ -23,3 +23,15 @@ export const POSTGRES_DATABASE_CONFIG: TypeOrmModuleOptions = {
   entities: [],
   synchronize: true,
 };
+
+export const MONGO_DATABASE_CONFIG: TypeOrmModuleOptions = {
+  name: 'mongodb',
+  type: 'mongodb',
+  host: process.env.MONGO_DATABASE_HOST,
+  port: Number(process.env.MONGO_DATABASE_PORT),
+  username: process.env.MONGO_DATABASE_USERNAME,
+  password: process.env.MONGO_DATABASE_PASSWORD,
+  database: process.env.MONGO_DATABASE_NAME,
+  entities: [],
+  synchronize: true,
+};
