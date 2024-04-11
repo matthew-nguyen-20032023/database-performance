@@ -9,6 +9,7 @@ import {
   MYSQL_DATABASE_CONFIG,
   POSTGRES_DATABASE_CONFIG,
 } from 'src/configs/databases/database.config';
+import { ScyllaProvider } from 'src/configs/databases/scylla/scylla.provider';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import {
     TypeOrmModule.forRoot(MONGO_DATABASE_CONFIG),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ScyllaProvider],
+  exports: [AppService, ScyllaProvider],
 })
 export class AppModule {}
