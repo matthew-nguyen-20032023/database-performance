@@ -38,14 +38,14 @@ export const MONGO_DATABASE_CONFIG: TypeOrmModuleOptions = {
   synchronize: true,
 };
 
-export const scyllaClient = new cassandra.Client({
-  contactPoints: [process.env.SCYLLA_DATABASE_CONNECT_POINT],
-  localDataCenter: 'datacenter1',
-  keyspace: 'test',
-});
-
-async.series([
-  function connect(next) {
-    scyllaClient.connect(next);
-  },
-]);
+// export const scyllaClient = new cassandra.Client({
+//   contactPoints: [process.env.SCYLLA_DATABASE_CONNECT_POINT],
+//   localDataCenter: 'datacenter1',
+//   keyspace: 'test',
+// });
+//
+// async.series([
+//   function connect(next) {
+//     scyllaClient.connect(next);
+//   },
+// ]);
